@@ -1,4 +1,4 @@
-export const serverURL = "http://localhost:5000/";
+export const serverURL = "https://backend-2nq6.onrender.com/";
 
 
 
