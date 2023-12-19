@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import VideoCard from "./VideoCard";
 import { getAllVideo } from "../services/allAPI";
-import Zoom from 'react-reveal/Zoom';
 
 function View({ uploadVideoStatus }) {
     const [allVideo, setAllVideo] = useState([])
@@ -20,7 +19,7 @@ function View({ uploadVideoStatus }) {
     };
     useEffect(() => {
         getAllVideosFromDb()
-    }, [uploadVideoStatus,deleteVideoStatus])
+    }, [uploadVideoStatus, deleteVideoStatus])
     return (
         <>
             <Row>
@@ -28,9 +27,9 @@ function View({ uploadVideoStatus }) {
                     allVideo.length > 0 ?
                         allVideo.map((video) => (
                             <Col lg={4} >
-                                <Zoom>
-                                    <VideoCard displayVideo={video} setDeleteVideoStatus={setDeleteVideoStatus} />
-                                </Zoom>
+
+                                <VideoCard displayVideo={video} setDeleteVideoStatus={setDeleteVideoStatus} />
+
                             </Col>
                         ))
                         :
