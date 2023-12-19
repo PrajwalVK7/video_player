@@ -4,7 +4,6 @@ import { useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import { Row, Col } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
-import Zoom from 'react-reveal/Zoom';
 import { deleteVideo } from '../services/allAPI';
 import { addToHistory } from '../services/allAPI';
 function VideoCard({ displayVideo, setDeleteVideoStatus }) {
@@ -40,9 +39,9 @@ function VideoCard({ displayVideo, setDeleteVideoStatus }) {
         console.log(response)
     }
 
-    const dragStarted = (e,id)=>{
+    const dragStarted = (e, id) => {
         console.log(`video card with id ${id} started dragging`)
-        e.dataTransfer.setData("videoId",id)
+        e.dataTransfer.setData("videoId", id)
     }
 
     return (
@@ -50,18 +49,18 @@ function VideoCard({ displayVideo, setDeleteVideoStatus }) {
         <>
             <Row>
                 <Col className='d-flex justify-content-center'>
-                    <Zoom>
-                        <Card draggable onDragStart={(e) => dragStarted(e,displayVideo.id)} 
+
+                    <Card draggable onDragStart={(e) => dragStarted(e, displayVideo.id)}
                         className='mt-5 mb-5' style={{ width: '100%', height: '300px' }}>
-                            <Card.Img key={displayVideo.id} onClick={handleShow} variant="top" src={displayVideo.url} style={{ height: '100%' }} />
-                            <Card.Body >
-                                <div className="d-flex justify-content-evenly align-items.center ">
-                                    <Card.Text>{displayVideo.caption}</Card.Text>
-                                    <Button onClick={() => removeVideo(displayVideo.id)} variant="danger" className='ms-5'><i className="fa-solid fa-trash"></i></Button>
-                                </div>
-                            </Card.Body>
-                        </Card>
-                    </Zoom>
+                        <Card.Img key={displayVideo.id} onClick={handleShow} variant="top" src={displayVideo.url} style={{ height: '100%' }} />
+                        <Card.Body >
+                            <div className="d-flex justify-content-evenly align-items.center ">
+                                <Card.Text>{displayVideo.caption}</Card.Text>
+                                <Button onClick={() => removeVideo(displayVideo.id)} variant="danger" className='ms-5'><i className="fa-solid fa-trash"></i></Button>
+                            </div>
+                        </Card.Body>
+                    </Card>
+
                     <Modal
                         show={show}
                         onHide={handleClose}
